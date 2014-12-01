@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ -f script/$1 ]
+then
+  COMMAND=script/$1
+  shift
+  $COMMAND $@
+else
+  ls script | egrep -v "^router$"
+  exit 1
+fi
