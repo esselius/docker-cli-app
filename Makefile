@@ -12,13 +12,13 @@ test: build
 build:
 	docker build -t ${AUTHOR}/${APP}:${TAG} .
 
-tag: build
+tag-latest: build
 	docker tag ${AUTHOR}/${APP}:${TAG} ${AUTHOR}/${APP}:latest
 
 pull:
 	docker pull ${AUTHOR}/${APP}:latest || true
 
-push: pull tag
+push: pull tag-latest
 	docker push ${AUTHOR}/${APP}:${TAG}
 	docker push ${AUTHOR}/${APP}:latest
 
